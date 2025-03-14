@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuma AI</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">
+                <img src="kumaai_logo.png" alt="Kuma AI Logo">
+                <span class="logo-text">Kuma AI</span>
+            </div>
+            <div class="nav-links">
+                <a href="index.en.html" class="lang-switch">English</a>
+                <a href="#home" class="active">ホーム</a>
+                <a href="#news">NEWS</a>
+                <a href="#contact">お問い合わせ</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="active">
+            <div class="hero">
+                <h1>Kuma AI</h1>
+                <p>AIで未来を創造する</p>
+            </div>
+            <div class="why-kuma container">
+                <h2>Why Kuma AI</h2>
+                <div class="services-grid">
+                <div class="service-item">
+                    <div class="icon">💻</div>
+                    <h3>AI開発アウトソーシング</h3>
+                        <p>豊富な経験を持つエンジニアチームが、お客様のニーズに合わせた最適なAIソリューションを提供します。スケーラブルで高性能なシステムの開発から、既存システムのAI実装まで、幅広いサービスを展開しています。</p>
+                    </div>
+                <div class="service-item">
+                    <div class="icon">🔧</div>
+                    <h3>AIモデルカスタマイズ</h3>
+                        <p>業界特化型のAIモデル開発から、既存モデルのファインチューニングまで、お客様の業務に最適化されたAIモデルを提供。高精度で効率的なソリューションを実現します。</p>
+                    </div>
+                <div class="service-item">
+                    <div class="icon">📊</div>
+                    <h3>AI技術コンサルティング</h3>
+                        <p>AI導入の戦略立案から、技術選定、実装まで、包括的なサポートを提供。お客様のビジネスにおけるAI活用の可能性を最大限に引き出します。</p>
+                    </div>
+                <div class="service-item">
+                    <div class="icon">📈</div>
+                    <h3>高品質データ制作</h3>
+                        <p>AIモデルの性能を最大限に引き出す、高品質な学習データの収集・作成・アノテーションサービスを提供。厳格な品質管理体制で、信頼性の高いデータセットを構築します。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2>会社概要</h2>
+                <div class="company-info">
+                    <table>
+                        <tr>
+                            <th>会社名</th>
+                            <td>Kuma AI 合同会社</td>
+                        </tr>
+                        <tr>
+                            <th>設立</th>
+                            <td>[設立日]</td>
+                        </tr>
+                        <tr>
+                            <th>資本金</th>
+                            <td>30万円</td>
+                        </tr>
+                        <tr>
+                            <th>代表取締役</th>
+                            <td>董于洋</td>
+                        </tr>
+                        <tr>
+                            <th>事業内容</th>
+                            <td>アウトソーシング事業の受託及び請負<br>
+                                AIサービスの開発<br>
+                                AIのためのデータ作成<br>
+                                AI技術のコンサルタント</td>
+                        </tr>
+                        <tr>
+                            <th>所在地</th>
+                            <td>東京都中央区勝どき4-6-1-2719</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <section id="news">
+            <div class="container">
+                <h2>NEWS</h2>
+                <div class="news-grid">
+                    <div class="news-item">
+                        <div class="news-date">[日付]</div>
+                        <div class="news-title">[ニュースタイトル]</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">[日付]</div>
+                        <div class="news-title">[ニュースタイトル]</div>
+                    </div>
+                    <div class="news-item">
+                        <div class="news-date">[日付]</div>
+                        <div class="news-title">[ニュースタイトル]</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="contact">
+            <div class="container">
+                <h2>お問い合わせ</h2>
+                <div class="form-message success">
+                    メッセージを送信しました。ありがとうございます。
+                </div>
+                <div class="form-message error">
+                    申し訳ありませんが、エラーが発生しました。もう一度お試しください。
+                </div>
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <label for="name">お名前</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">メッセージ</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">送信</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kuma AI</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
