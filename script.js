@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "news": [
                 {
                     "date": "2024-02-15",
-                    "title": "会社設立のお知らせ",
+                    "title": "hello world",
                     "url": "#"
                 }
             ]
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             "news": [
                 {
                     "date": "2024-02-15",
-                    "title": "Company Establishment Announcement",
+                    "title": "hello world",
                     "url": "#"
                 }
             ]
