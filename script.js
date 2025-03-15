@@ -52,36 +52,30 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 新闻数据
-    const newsData = {
-        "ja": {
-            "news": [
-                {
-                    "date": "2024-02-15",
-                    "title": "hello world",
-                    "url": "#"
-                }
-            ]
-        },
-        "en": {
-            "news": [
-                {
-                    "date": "2024-02-15",
-                    "title": "hello world",
-                    "url": "#"
-                }
-            ]
-        }
-    };
-
     // 加载新闻数据
-    const loadNews = () => {
-        const lang = document.documentElement.lang;
-        const news = newsData[lang === 'ja' ? 'ja' : 'en'].news;
+    const loadNews = async () => {
         const newsGrid = document.querySelector('.news-grid');
-        newsGrid.innerHTML = '';
+        newsGrid.innerHTML = '<div class="news-loading">Loading news...</div>';
         
-        news.forEach(item => {
+        try {
+            // 使用绝对路径获取news.json文件内容
+            const response = await fetch('./news.json');
+            console.log('News fetch response:', response);
+            
+            if (!response.ok) {
+                throw new Error(`Failed to load news data: ${response.status} ${response.statusText}`);
+            }
+            
+            const newsData = await response.json();
+            console.log('News data loaded:', newsData);
+            
+            const lang = document.documentElement.lang;
+            const news = newsData[lang === 'ja' ? 'ja' : 'en'].news;
+            
+            newsGrid.innerHTML = '';
+            
+            if (news && news.length > 0) {
+                news.forEach(item => {
             const newsItem = document.createElement('div');
             newsItem.className = 'news-item';
             
@@ -104,10 +98,77 @@ document.addEventListener('DOMContentLoaded', () => {
                 title.textContent = item.title;
             }
             
-            newsItem.appendChild(date);
-            newsItem.appendChild(title);
-            newsGrid.appendChild(newsItem);
-        });
+                    newsItem.appendChild(date);
+                    newsItem.appendChild(title);
+                    newsGrid.appendChild(newsItem);
+                });
+            } else {
+                newsGrid.innerHTML = '<div class="news-empty">No news available</div>';
+            }
+        } catch (error) {
+            console.error('Error loading news data:', error);
+            // 显示详细的错误信息在新闻区域
+            newsGrid.innerHTML = `<div class="news-error">Failed to load news data: ${error.message}</div>`;
+            
+            // 尝试使用硬编码的备用数据
+            try {
+                const backupNewsData = {
+                    "ja": {
+                        "news": [
+                            {
+                                "date": "2025-03-15",
+                                "title": "hello world (backup)",
+                                "url": "#"
+                            }
+                        ]
+                    },
+                    "en": {
+                        "news": [
+                            {
+                                "date": "2025-03-15",
+                                "title": "hello world (backup)",
+                                "url": "#"
+                            }
+                        ]
+                    }
+                };
+                
+                const lang = document.documentElement.lang;
+                const news = backupNewsData[lang === 'ja' ? 'ja' : 'en'].news;
+                
+                newsGrid.innerHTML = '<div class="news-backup-notice">Using backup data</div>';
+                
+                news.forEach(item => {
+                    const newsItem = document.createElement('div');
+                    newsItem.className = 'news-item';
+                    
+                    const date = document.createElement('div');
+                    date.className = 'news-date';
+                    date.textContent = new Date(item.date).toLocaleDateString(
+                        lang === 'ja' ? 'ja-JP' : 'en-US',
+                        { year: 'numeric', month: 'long', day: 'numeric' }
+                    );
+                    
+                    const title = document.createElement('div');
+                    title.className = 'news-title';
+                    
+                    if (item.url && item.url !== '#') {
+                        const link = document.createElement('a');
+                        link.href = item.url;
+                        link.textContent = item.title;
+                        title.appendChild(link);
+                    } else {
+                        title.textContent = item.title;
+                    }
+                    
+                    newsItem.appendChild(date);
+                    newsItem.appendChild(title);
+                    newsGrid.appendChild(newsItem);
+                });
+            } catch (backupError) {
+                console.error('Error using backup news data:', backupError);
+            }
+        }
     };
 
     // 导航链接处理
